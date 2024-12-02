@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/Layout"
+>
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{./css/bootstrap.min.css}">
+    <script src="../static/js/bootstrap.min.js" th:src="@{./js/bootstrap.min.js}"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <div class="container-fluid">
+        <a class="navbar-brand  text-light" href="#">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+<!--                    {{&#45;&#45; <a class="nav-link active  text-light" aria-current="page" href="#">Acceuil</a> &#45;&#45;}}-->
+                    <a class="nav-link active  text-light" aria-current="page" href="/">Patients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  text-light" href="/medecins">Medecins</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link  text-light" href="/admissions">Admissions</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link  text-light" href="/consultations">Consultations</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link  text-light" href="/traitements">Traitement</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link  text-light" href="/sorties">Sortie Patient</a>
+                </li>
+
+            </ul>
+<ul class="navbar-nav me-auto mb-2 mb-lg-2">
+    <li class="nav-item">
+        <a class="nav-link  text-light" role="button" th:text="${#authentication.name}"></a>
+    </li>
+
+    <li class="nav-item">
+        <form method="post" th:action="@{/logout}">
+            <button class="btn btn-info text-light" type="submit" >Logout</button>
+
+        </form>
+    </li>
+
+</ul>
+        </div>
+    </div>
+</nav>
+
+
+
+
+<section layout:fragment="content1">
+
+
+</section>
+
+
+<div class="blockcode navbar-dark bg-info" >
+    <footer class="page-footer shadow ">
+        <div class="d-flex flex-column mx-auto py-5" >
+<!--            <div class="d-flex flex-wrap justify-content-between">-->
+<!--                <div>-->
+<!--                    <a href="/" class="d-flex align-items-center p-0 text-light">-->
+<!--&lt;!&ndash;                        <img alt="logo" src="{{url('assets/images/logo.png')}}" width="170px" />&ndash;&gt;-->
+<!--                        <span class="ms-3 h5 font-weight-bold" text-align="right">Gestion des Patients</span>-->
+<!--                    </a>-->
+<!--                    <span class="mt-4">-->
+<!--              <button class="btn btn-light btn-flat p-2">-->
+<!--                <i class="fa fa-facebook"></i>-->
+<!--              </button>-->
+<!--              <button class="btn btn-light btn-flat p-2">-->
+<!--                <i class="fa fa-twitter"></i>-->
+<!--              </button>-->
+<!--              <button class="btn btn-light btn-flat p-2">-->
+<!--                <i class="fa fa-instagram"></i>-->
+<!--              </button>-->
+<!--            </span>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <p class="h5 mb-4 text-light" style="font-weight: 600">Gestion des Patients</p>-->
+<!--                    <ul class="p-0" style="list-style: none; cursor: pointer">-->
+<!--                        <li class="my-2">-->
+<!--                            <a class="text-light" href="/">Resources</a>-->
+<!--                        </li>-->
+<!--                        <li class="my-2">-->
+<!--                            <a class="text-light" href="/">About Us</a>-->
+<!--                        </li>-->
+<!--                        <li class="my-2">-->
+<!--                            <a class="text-light" href="/">Contact</a>-->
+<!--                        </li>-->
+<!--                        <li class="my-2">-->
+<!--                            <a class="text-light" href="/">Blog</a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <p class="h5 mb-4 text-light" style="font-weight: 600">Help</p>-->
+<!--                    <ul class="p-0" style="list-style: none; cursor: pointer">-->
+<!--                        <li class="my-2">-->
+<!--                            <a class="text-light" href="/">Support</a>-->
+<!--                        </li>-->
+<!--                        <li class="my-2">-->
+<!--                            <a class="text-light" href="/">Sign Up</a>-->
+<!--                        </li>-->
+<!--                        <li class="my-2">-->
+<!--                            <a class="text-light" href="/">Sign In</a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <p class="h5 mb-4" style="font-weight: 600">Help</p>-->
+<!--                    <ul class="p-0" style="list-style: none; cursor: pointer">-->
+<!--                        <li class="my-2">-->
+<!--                            <a class="text-light" href="/">Support</a>-->
+<!--                        </li>-->
+<!--                        <li class="my-2">-->
+<!--                            <a class="text-light" href="/">Sign Up</a>-->
+<!--                        </li>-->
+<!--                        <li class="my-2">-->
+<!--                            <a class="text-light" href="/">Sign In</a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+            <small class="text-center mt-5 text-light">&copy; Whiteman, 2024. All rights reserved.</small>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

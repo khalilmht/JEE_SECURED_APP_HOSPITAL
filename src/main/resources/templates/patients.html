@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://wwww.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/Layout"
+layout:decorate="template1"
+>
+<head>
+    <link rel="stylesheet" th:href="@{./css/bootstrap.min.css}" href="../static/css/bootstrap.min.css"/>
+    <meta charset="UTF-8">
+    <title>Patients</title>
+</head>
+<body>
+<div layout:fragment="content1">
+<div class="p-3">
+    <div class="card">
+        <div class="card-header ">
+            Liste de Patients
+        </div>
+        <div class=" card-body">
+        <form method="get" th:action="@{/index}">
+            <Label>Mot clé</Label>
+            <input type="text" name="mc" th:value="${mc}">
+            <button class="btn btn-outline-info">chercher</button>
+            <td><a  class="btn btn-outline-info" th:href="@{addPatient}">Ajouter Patients</a></td>
+        </form>
+
+            <table  class="table">
+                <thead>
+                <tr><th>ID</th><th>NOM</th><th>PRENOM</th><th>DATE</th><th>Adresse</th><th>Contact</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="p:${listepatients}">
+                    <td th:text="${p.id}"></td>
+                    <td th:text="${p.nom}"></td>
+                    <td th:text="${p.prenom}"></td>
+                    <td th:text="${p.dateNaissance}"></td>
+                    <td th:text="${p.adresse}"></td>
+                    <td th:text="${p.contact}"></td>
+                    <td><a onclick="return confirm('voulez vous supprimer ?');" class="btn btn-danger" th:href="@{deletePatient(id=${p.id},mc=${mc},page=${currentpage})}">Delete</a></td>
+                    <td><a  class="btn btn-success" th:href="@{editPatient(id=${p.id})}">Editer</a></td>
+
+                </tr>
+                </tbody>
+            </table>
+            <ul class="nav nav-pills">
+                <li th:each="page,status:${pages}">
+                    <a th:class="${status.index==currentpage?'btn btn-info m-1':'btn btn-outline-info m-1'}" th:href="@{/index(page=${status.index},mc=${mc})}"  th:text="${status.index}"></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+</div>
+
+</body>
+</html>

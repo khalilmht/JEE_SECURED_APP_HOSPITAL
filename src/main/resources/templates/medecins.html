@@ -1,0 +1,64 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/Layout"
+      layout:decorate="template1"
+>
+<head>
+    <meta charset="UTF-8"/>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{./css/bootstrap.min.css}"/>
+    <title>Liste de medecin</title>
+</head>
+<body>
+
+<div layout:fragment="content1">
+<div class="p-3 m-3">
+    <div class="card">
+        <div class="card-header ">
+            Liste de Medecin
+        </div>
+        <div class="card-body">
+<form method="get" th:action="@{/medecins(mc=${mc})}">
+        <label for="mc">Mot clé </label>
+        <input type="text" id="mc" name="mc" th:value="${mc}"  >
+        <button class="btn btn-outline-info" > Rechercher </button>
+        <a class="btn btn-outline-info"  th:href="@{/addmedecins}" >Ajouter Medecin</a>
+</form>
+
+            <table  class="table">
+                <thead>
+                <tr>
+                    <th>ID</th><th>Nom</th><th>Prénom</th><th>Date Naissance</th><th>Adresse</th><th>Contact</th><th>Specialité</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="m:${listmedecins}">
+                    <td th:text="${m.id}"></td>
+                    <td th:text="${m.nom}"></td>
+                    <td th:text="${m.prenom}"></td>
+                    <td th:text="${m.dateNaissance}"></td>
+                    <td th:text="${m.adresse}"></td>
+                    <td th:text="${m.contact}"></td>
+                    <td th:text="${m.specialite}"></td>
+                    <td><a onclick="return confirm('Voulez vous vraiment supprimer ?')" class="btn btn-danger" th:href="@{/deleteMedecin(id=${m.id},mc=${mc},page=${currentpage})}">Delete</a></td>
+                    <td><a  class="btn btn-success" th:href="@{editMedecin(id=${m.id},mc=${mc},page=${currentpage})}">Editer</a></td>
+
+                </tr>
+                </tbody>
+            </table>
+            <ul class="nav nav-pills">
+                <li th:each="page,actuel:${pages}">
+                    <a th:class="${actuel.index==currentpage?'btn btn-primary m-1':'btn btn-outline-info m-1'}" th:text="${actuel.index}" th:href="@{/medecins(page=${actuel.index},mc=${mc})}"></a>
+                </li>
+
+            </ul>
+
+
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+</body>
+</html>

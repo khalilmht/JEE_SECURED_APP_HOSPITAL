@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/Layout"
+      layout:decorate="template1"
+>
+<head>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{./css/bootstrap.min.css}">
+    <meta charset="UTF-8">
+    <title>Traitements</title>
+</head>
+<body>
+<div layout:fragment="content1">
+<div class="p-3 m-3">
+
+    <div class="card">
+        <div class="card-header bg-info">Liste de Traitements
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                <th>ID</th><th>MEDICAMENT</th><th>DOSE</th><th>DUREE</th><th>PATIENTS</th><th>MEDECINS</th>
+                </tr>
+                <tr th:each="t:${traitements}">
+                   <td th:text="${t.id}"></td>
+                    <td th:text="${t.medicament}"></td>
+                    <td th:text="${t.dose}"></td>
+                    <td th:text="${t.duree}"></td>
+                    <td th:text="${t.patient.getNom()}"></td>
+                    <td th:text="${t.medecin.getNom()}"></td>
+                    <td><a  class="btn btn-success" th:href="@{editPatient(id=${t.id},mc=${mc},page=${currentpage})}">Editer</a></td>
+                    <td><a  class="btn btn-primary" th:href="@{editPatient(id=${t.id},mc=${mc},page=${currentpage})}">Ajouter</a></td>
+                </tr>
+                </thead>
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+</body>
+</html>
